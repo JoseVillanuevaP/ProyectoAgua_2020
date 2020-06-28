@@ -37,6 +37,7 @@ Route::get('mapa','MapaController@index')->name('mapa');
 
 Route::get('charts','ChartController@index')->name('charts');
 Route::post('chart/fetch_data', 'ChartController@fetch_data');
+Route::get('charts/{id}', 'ChartController@getEdif');
 
 
 Auth::routes();
@@ -132,7 +133,7 @@ Route::middleware(['auth'])->group(function (){
         ->middleware('can:reportes.index');
 
     Route::put('reportes/{reporte}','ReporteController@update')->name('reportes.update')
-        ->middleware('can:repor tes.edit');
+        ->middleware('can:reportes.edit');
 
     Route::get('reportes/{reporte}','ReporteController@show')->name('reportes.show')
         ->middleware('can:reportes.show');

@@ -8,6 +8,8 @@
     <title>Estadística</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="responsive/css/style.css">
+    {!! Html::script('js/jquery-3.4.1.min.js')!!}
+    {!! Html::script('js/dropdown.js')!!}
 </head>
 
 <body>
@@ -98,7 +100,7 @@
         data.addColumn('string', 'mes');
         data.addColumn('number', 'Consumo m3');
         $.each(jsonData, (i, jsonData) => {
-                let mes = jsonData.mes;
+            let mes = jsonData.mes;
             let cantidad_agua = parseFloat($.trim(jsonData.cantidad_agua));
             data.addRows([
                 [mes, cantidad_agua]

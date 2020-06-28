@@ -69,10 +69,13 @@ class ReporteController extends Controller
     }
 
 
-    public function show(Reporte $reporte)
+    public function show()
     {
         //dd($product->id);
-        return view('reportes.show', compact('reporte'));
+        $reportes_view = Reporte::paginate();
+
+
+        return view('reportes.show', compact('reportes_view'));
 
 
     }

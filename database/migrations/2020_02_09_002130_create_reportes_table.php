@@ -21,7 +21,7 @@ class CreateReportesTable extends Migration
             $table->date('fecha_hallazgo')->nullable();
 
             $table->integer('edificio_id')->unsigned();
-            $table->foreign('edificio_id')->references('id')->on('edificios');
+            $table->foreign('edificio_id')->references('id')->on('edificios')->onDelete('cascade');
             $table->string('lugar_especifico')->nullable();
             $table->string('riesgo')->nullable();
             $table->string('sugerencia_soluc')->nullable();
@@ -39,5 +39,6 @@ class CreateReportesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('reportes');
+        Schema::dropIfExists('edificios');
     }
 }

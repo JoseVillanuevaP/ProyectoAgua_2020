@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\RoleRequest;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class RoleController extends Controller
      public function index()
     {
         $roles = Role::paginate();
-        
+
         return view('roles.index', compact('roles'));
     }
 
@@ -28,7 +29,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        
+
             $permissions= Permission::get();
 
             return view('roles.create',compact('permissions'));
@@ -40,11 +41,11 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
         $role= Role::create($request-> all());
-        
-        
+
+
         //actualizar permisos
         $role->permissions()->sync($request->get('permissions'));
 
@@ -74,7 +75,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        
+
         $permissions= Permission::get();
         return view('roles.edit', compact('role','permissions'));
 
@@ -87,19 +88,19 @@ class RoleController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(RoleRequest $request, Role $role)
     {
-        
+
         //actualice el roles
         //luego que se actualicen los roles
-        
-        
+
+
         //actualizar el rol
         $role->update($request->all());
-        
+
         //actualizar permisos
         $role->permissions()->sync($request->get('permissions'));
-        
+
         return redirect()->route('roles.edit',$role-> id)
             ->with('info','Rol Actualizado Con Éxito');
     }
@@ -113,8 +114,7 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role ->delete();
-        
+
         return back()->with('info','Rol Eliminado Correctamente');
     }
 }
-    

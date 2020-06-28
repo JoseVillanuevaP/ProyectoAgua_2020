@@ -37,6 +37,10 @@ class Product extends Model
 
     }
 
+    public static function edif_anual($id){
+        return Product::where('edificio_id','=',$id)->get();
+    }
+
 
 
 

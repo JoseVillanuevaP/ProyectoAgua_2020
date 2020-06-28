@@ -1,3 +1,16 @@
+@if(count($errors) >0)
+    <div class="alert alert-danger" role="alert">
+        <strong>¡Por favor verifique los siguientes errores!</strong>
+        <ul>
+            @foreach($errors-> all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+
+@endif
+
+
 <div class="form-group">
 	{{ Form::label('name', 'Nombre de la etiqueta') }}
 	{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}

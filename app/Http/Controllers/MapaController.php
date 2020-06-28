@@ -10,7 +10,7 @@ class MapaController extends Controller
 {
       public function index()
     {
-        $chale = Product::all();
+        $edif = Product::all();
 
         $categorias=Product::where('edificio_id', 1) ->sum('cantidad_agua');
         $categorias2=Product::where('edificio_id', 3) ->sum('cantidad_agua');
@@ -22,7 +22,7 @@ class MapaController extends Controller
         //dd($chale);
         //dd($categorias);
 
-        return view('layouts.mapa',compact('chale','categorias','categorias2','categorias3','categorias4'
+        return view('layouts.mapa',compact('edif','categorias','categorias2','categorias3','categorias4'
             ,'categorias5','categorias6'));
     }
 

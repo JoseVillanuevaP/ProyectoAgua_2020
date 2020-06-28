@@ -47,8 +47,8 @@ class ProductsRules implements Rule
     public function message()
     {
         return[
-            'El :attribute ya existe mi estimado usuario.',
-            'El :attribute ya existe mi estimado usuario.',
+            'El :attribute ya existe ',
+            'El :attribute ya existe',
 
         ];
     }

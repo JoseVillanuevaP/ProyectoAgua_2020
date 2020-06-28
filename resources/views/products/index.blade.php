@@ -34,12 +34,11 @@
                             {{ Form::select('tipo',[
                             'anual' => 'Año',
                             'mes' => 'Mes',
-                            'cantidad_agua '=>'Consumo',
-                            'edificio_id'=>'Edificio'],
+                            'cantidad_agua '=>'Consumo'],
                             null,['class' => 'form-control','placeholder' =>'Seleccione Opción'])}}
 
                             <input name="buscarpor" class="form-control mr-sm-2" type="search"
-                                   placeholder="Buscar por edificio" aria-label="Search">
+                                   placeholder="Buscar por " aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
 
 
