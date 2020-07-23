@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Edificio;
+use App\Product;
 use Illuminate\Http\Request;
 use DB;
 
@@ -23,7 +24,7 @@ class ChartController extends Controller
     public function getEdif(Request $request, $id)
     {
         if($request->ajax()){
-            $edific = Edificio::edif_anual($id);
+            $edific = Product::edif_anual($id);
             return response()->json($edific);
         }
 

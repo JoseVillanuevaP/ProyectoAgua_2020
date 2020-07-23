@@ -48,24 +48,12 @@
         <div class="row">
             <div class="col-md-12">
                 <label>Edificio</label>
-                <select name="edificio" id="edificio" class="form-control">
-                    <option value="">Seleccione Edificio</option>
-
-                    @foreach($edifi_list as $row)
-                        <option value="{{$row->name}}">{{$row->name}}</option>
-                    @endforeach
-
-                </select>
+                {!!Form::select('edifcio',$ed,null,['class' => 'form-control','id'=>'edificio','placeholder' =>'Seleccione Edificio'])!!}
             </div>
 
             <div class="col-md-12">
                 <label>Año</label>
-                <select name="anual" id="anual" class="form-control">
-                    <option value="">Seleccione Año</option>
-                    @foreach($year_list as $row)
-                        <option value="{{$row->id}}">{{$row->anual}}</option>
-                    @endforeach
-                </select>
+                {!!Form::select('anual',['placeholder'=>'Selecciona Año'],null,['class' => 'form-control','id'=>'anual'])!!}
             </div>
 
         </div>
