@@ -95,11 +95,7 @@
             ]);
         });
         data.addRows([
-            // ['Mushrooms', 140],
-            // ['Onions', 50],
-            // ['Olives', 30],
-            // ['Zucchini', 20],
-            // ['Pepperoni', 12]
+
         ]);
         // Set chart options
         var options = {
@@ -111,7 +107,7 @@
             vAxis: {
                 title: "Cantidad De Agua"
             },
-            colors: ['#1c6da9'],
+            colors: ['#3a6d97'],
 
             chartArea: {
                 width: '50%',

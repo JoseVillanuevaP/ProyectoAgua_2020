@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class EdificioRequest extends FormRequest
 {
@@ -23,15 +24,20 @@ class EdificioRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            'name' =>'required|unique:edificios,name'.$this->tag
+            'name' => [
+                'required',
+                Rule::unique('edificios')->ignore($this->route('edificios'))
+            ]
         ];
     }
+
     public function messages()
     {
         return [
-            'name.required'=>'El campo nombre  es obligatorio',
-            'name.unique'=>'El campo nombre  ya existe en el sistema'
+            'name.required' => 'El campo nombre  es obligatorio',
+            'name.unique' => 'El campo nombre  ya existe en el sistema'
         ];
     }
 }

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Edificio;
+use Illuminate\Support\Facades\DB;
 use Jenssegers\Date\Date;
 use Carbon\Carbon;
 
-use DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Input;
@@ -35,25 +35,23 @@ class ProductController extends Controller
         dd($data);*/
 
 
-
         /*$current = new Carbon();
         $date = Carbon::now();
 
         $date ->month();*/
         $edificios = Edificio::pluck('name', 'id');
 
-        $buscar= $request->get('buscarpor');
-        $tipo = $request -> get('tipo');
-
+        $buscar = $request->get('buscarpor');
+        $tipo = $request->get('tipo');
 
 
         //$products = Product::type($request->get('edificio_id'))->orderBy('anual','DESC')->paginate();
-        $products = Product::orderBy('anual', 'ASC')->buscarpor($tipo,$buscar)->paginate(20);
+        $products = Product::orderBy('anual', 'ASC')->buscarpor($tipo, $buscar)->paginate(20);
 
         //$products = Product::orderBy('anual','ASC')->paginate();
 
 
-        return view('products.index', compact('products','edificios'));
+        return view('products.index', compact('products', 'edificios'));
     }
 
 
@@ -72,32 +70,22 @@ class ProductController extends Controller
     {
 
 
-        /*$product=new Product();
+        /*$product = new Product();
 
-        $product->edificio_id=request('edificio_id');
-        $product->description=request('description');
-        $product->mes=request('mes');
-        $product->anual=request('anual');
-        $product->cantidad_agua=request('cantidad_agua');
+
+        $product->edificio_id = $request->get('edificio_id');
+        $product->description = $request->get('description');
+
+        $product->anual = $request->get('anual');
+        $product->mes = $request->get('mes');
+
+        $product->cantidad_agua = $request->get('cantidad_agua');
+
+        $product->save();
         */
 
-
-
-        /*$user = $request->get('mes');
-        $date1= Product::where('mes', '=',$request->get('mes'))->first();
-        $date2= Product::where('anual', '=',$request->get('anual'))->first();
-
-        if ($date1 === null ) {
-            echo "no existe mes ";
-        }elseif ($date2 == null){
-            echo "no existe año :V";
-        }else{
-            echo "ya existe mes y año carnal";
-        }*/
-
-       // $product->save();
-
         $product= Product::create($request-> all());
+
 
         return redirect()->route('products.index', $product->id)
             ->with('info', 'Dato Guardado Con Éxito');
@@ -110,7 +98,8 @@ class ProductController extends Controller
      * @param \App\User $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public
+    function show(Product $product)
     {
         //dd($product->id);
         return view('products.show', compact('product'));
@@ -124,7 +113,8 @@ class ProductController extends Controller
      * @param \App\User $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public
+    function edit(Product $product)
     {
         $edificios = Edificio::pluck('name', 'id');
         return view('products.edit', compact('product', 'edificios'));
@@ -140,7 +130,8 @@ class ProductController extends Controller
      * @param \App\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public
+    function update(Request $request, Product $product)
     {
         $product->update($request->all());
 
@@ -152,10 +143,11 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\User $prod   uct
+     * @param \App\User $prod uct
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public
+    function destroy(Product $product)
     {
         $product->delete();
 

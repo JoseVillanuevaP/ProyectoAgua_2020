@@ -40,7 +40,7 @@ Route::post('chart/fetch_data', 'ChartController@fetch_data');
 Route::get('charts/{id}', 'ChartController@getEdif');
 
 
-Route::resource('edificios','ChartController');
+Route::resource('edif','ChartController');
 Route::get('anuals/{id}','ChartController@getEdif');
 
 Auth::routes();

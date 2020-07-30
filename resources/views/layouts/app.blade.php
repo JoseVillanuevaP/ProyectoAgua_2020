@@ -99,7 +99,7 @@
 
                     @can('reportes.index')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('reportes.index')}}">Reportes</a>
+                            <a class="nav-link" href="{{route('reportes.index')}}" >Reportes <span class="badge">5</span></a>
                         </li>
                     @endcan
 
