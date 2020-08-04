@@ -52,6 +52,8 @@ Route::post('reportes/store','ReporteController@store')->name('reportes.store');
 
 Route::get('reportes/store','ReporteController@create')->name('reportes.create');
 
+Route::get('reportes','ReporteController@index')->name('reportes.index');
+
 
 //Routes
 
@@ -132,8 +134,7 @@ Route::middleware(['auth'])->group(function (){
     //Reportes
 
 
-    Route::get('reportes','ReporteController@index')->name('reportes.index')
-        ->middleware('can:reportes.index');
+
 
     Route::put('reportes/{reporte}','ReporteController@update')->name('reportes.update')
         ->middleware('can:reportes.edit');

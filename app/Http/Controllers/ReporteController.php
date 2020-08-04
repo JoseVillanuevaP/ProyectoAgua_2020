@@ -25,7 +25,7 @@ class ReporteController extends Controller
     {
 
 
-        $reportes = Reporte::paginate();
+        $reportes = Reporte::paginate(9);
 
 
         return view('reportes.index', compact('reportes'));

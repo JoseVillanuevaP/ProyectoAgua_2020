@@ -26,19 +26,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        /*$data = Product::
-        (DB::raw('mes'))
-            ->groupBy('mes')
-            ->orderBy('mes','ASC')
-            ->get();
-        return $data;
-        dd($data);*/
 
-
-        /*$current = new Carbon();
-        $date = Carbon::now();
-
-        $date ->month();*/
         $edificios = Edificio::pluck('name', 'id');
 
         $buscar = $request->get('buscarpor');
@@ -70,19 +58,6 @@ class ProductController extends Controller
     {
 
 
-        /*$product = new Product();
-
-
-        $product->edificio_id = $request->get('edificio_id');
-        $product->description = $request->get('description');
-
-        $product->anual = $request->get('anual');
-        $product->mes = $request->get('mes');
-
-        $product->cantidad_agua = $request->get('cantidad_agua');
-
-        $product->save();
-        */
 
         $product= Product::create($request-> all());
 

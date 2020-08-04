@@ -79,7 +79,7 @@
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <img src="responsive/assets/img/tubo.jpg" width="190px" alt="Sucursal"
                      class="img-responsive img-rounded">
-                <h3 class="text-center">Fugas De Agua</h3>
+                <a href="{{route('reportes.index')}}"><h3 class="text-center">Fugas De Agua</h3></a>
                 <p class="text-center">
                 </p>
             </div>
